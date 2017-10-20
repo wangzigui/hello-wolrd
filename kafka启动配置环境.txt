@@ -1,0 +1,45 @@
+ 打开zookeeper服务
+ zkserver
+ 
+搭建一个多个broker的集群
+
+刚才只是启动了单个broker，现在启动有3个broker组成的集群，这些broker节点也都是在本机上的：
+首先为每个节点编写配置文件：
+
+> cp config/server.properties config/server-1.properties
+> cp config/server.properties config/server-2.properties
+复制代码
+
+
+在拷贝出的新文件中添加以下参数：
+config/server-1.properties:
+    broker.id=1
+    port=9093
+    log.dir=/tmp/kafka-logs-1
+复制代码
+
+
+config/server-2.properties:
+    broker.id=2
+    port=9094
+    log.dir=/tmp/kafka-logs-2
+复制代码
+ 
+ 打开3个kafka服务
+ .\bin\windows\kafka-server-start.bat .\config\server.properties
+ .\bin\windows\kafka-server-start.bat .\config\server-1.properties
+ .\bin\windows\kafka-server-start.bat .\config\server-2.properties
+ 
+ 查询主题
+ bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic my-replicated-topic
+ 
+ 创建主题
+ bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 3 --partitions 1 --topic my-replicated-topic
+ 
+ 创建生成者
+ kafka-console-producer.bat --broker-list localhost:9092 --topic my-replicated-topic
+ 
+ 创建消费者
+ kafka-console-consumer.bat --zookeeper localhost:2181 --from-beginning --topic my-replicated-topic
+ 
+ bin\windows\kafka-server-stop.bat
