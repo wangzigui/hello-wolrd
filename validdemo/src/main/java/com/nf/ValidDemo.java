@@ -14,19 +14,17 @@ import javax.validation.ValidatorFactory;
 public class ValidDemo implements Serializable {
 	public static void main(String[] args) {
 		Student xiaoming = getBean();
-//		xiaoming.setName("sdf");
-//		xiaoming.setClassNum("1234");
-		xiaoming.setId(4);
+		// xiaoming.setName("sdf");
+		// xiaoming.setClassNum("1234");
+		xiaoming.setId(6);
 		List<String> validate = validate(xiaoming);
-		if(!validate.isEmpty())
-		{
+		if (!validate.isEmpty()) {
 			validate.forEach(new Consumer<String>() {
 				public void accept(String row) {
 					System.out.println(row.toString());
 				}
 			});
 		}
-		
 
 	}
 
@@ -47,7 +45,8 @@ public class ValidDemo implements Serializable {
 
 		List<String> messageList = new ArrayList<String>();
 		for (ConstraintViolation<T> constraintViolation : constraintViolations) {
-			messageList.add(constraintViolation.getMessage());
+
+			messageList.add(constraintViolation.getPropertyPath().toString() + ":" + constraintViolation.getMessage());
 		}
 		return messageList;
 	}

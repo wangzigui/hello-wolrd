@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 
 public class Student {
 	
-	@NotNull(message="name 不能为null")
+	@NotNull(message="不能为null")
 	private String name;
 	
 	@Max(value = 5)
