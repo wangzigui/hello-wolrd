@@ -1,0 +1,73 @@
+搭建环境
+
+1. 安装JDK
+
+1.1 安装文件：http : //www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html 下载Server JRE。
+1.2 安装完成后需要添加以下的环境变量（右键点击“ 我的电脑” - >“ 高级系统设置” - >“ 环境变量”  ）：
+
+·JAVA_HOME：C：\ProgramFiles（x86\Java\jre1.8.0_60 （这个是默认安装路径，如果安装过程中更改了安装目录，把更改后的路径填上就行了）
+PATH：在现有的值后面添加“;％JAVA_HOME％\bin”
+
+1.3 打开CMD 运行“的Java版本” 查看当前系统的Java 的版本：
+
+ 
+
+2. 安装Zookeeper
+
+Kafka 的运行依赖于Zookeeper ，所以在运行Kafka 之前我们需要安装并运行Zookeeper
+
+2.1 下载安装文件：http://zookeeper.apache.org/releases.html
+
+2.2 解压文件（本文解压到 G:\zookeeper-3.4.8 ）
+
+2.3 打开G：\zookeeper-3.4.8\ conf ，把zoo_sample.cfg 重命名成zoo.cfg
+
+2.4 从文本编辑器里打开zoo.cfg
+
+2.5 把DATADIR 的值改成“G:\zookeeper-3.4.8\data”
+
+2.6 添加如下系统变量：
+ZOOKEEPER_HOME：G:\zookeeper-3.4.8
+path：在现有的值后面添加 ;%ZOOKEEPER_HOME%\bin;
+
+2.7 运行Zookeeper：打开CMD 然后执行
+zkserver 
+
+3. 安装并运行kafka
+
+3.1 下载安装文件：http://kafka.apache.org/downloads.html 
+
+3.2 解压文件（本文解压到 G:\kafka_2.11-0.10.0.1 ）
+
+3.3 打开G:\kafka_2.11-0.10.0.1\config
+
+3.4 从字幕：编辑器里打开server.properties的
+
+3.5 把log.dirs 的值改成 “G:\kafka_2.11-0.10.0.1\kafkalog”
+
+3.6 打开CMD
+
+3.7 进入kafka 文件目录：cd /d G:\kafka_2.11-0.10.0.1
+
+3.8 输入并执行以打kafka：
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+ 
+
+
+
+4.1 使用kafka
+ 打开CMD 并进入G:\kafka_2.11-0.10.0.1\
+
+ 查询主题
+ bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic my-replicated-topic
+ 
+ 创建主题
+ bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic ty_account_freeze
+ 
+ 创建生产者
+ bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic my-replicated-topic6
+ 
+ 创建消费者
+ bin\windows\kafka-console-consumer.bat --zookeeper localhost:2181 --from-beginning --topic my-replicated-topic6
