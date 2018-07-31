@@ -1,0 +1,18 @@
+1.使用DBeaver连接ignite
+ignite支持sql模式，自然可以用sql客户端连接，官网给出了使用DBeaver连接ignite的说明https://apacheignite-sql.readme.io/docs/sql-tooling,
+只需要在DBeaver 驱动管理中新增ignite驱动即可使用.
+安装使用步骤如下：
+(1)下载DBeaver
+(2)打开DBeaver，配置ignite驱动信息
+选择数据库-->驱动管理-->新建，在创建新驱动表格中配置：
+驱动名称- 一个自定义名称，将其设置Apache Ignite为简单起见。
+类名- 设置org.apache.ignite.IgniteJdbcThinDriver为一个值。
+URL 模版- 这是Ignite的JDBC连接字符串，jdbc:ignite:thin://127.0.0.1/应该用作本入门指南的一部分。
+默认端口- 10800默认情况下，Ignite的JDBC驱动程序使用端口。如果您需要更改端口或修改上面共享的URL连接字符串，请参阅JDBC文档。
+库选项卡 - 单击添加文件按钮并找到{apache-ignite-version}/libs/ignite-core-{version}.jar包含Ignite的JDBC驱动程序的文件。该jar包如果没有，可以到以下网站下载https://ignite.apache.org/download.cgi
+点击OK按钮完成设置，然后关闭Driver Manager对话框。
+(3)使用ignite数据库
+选择数据库-->新建连接-->Apache Ignite(上述驱动配置的驱动名称)，点击下一步，
+在通用jdbc连接设置表格输入 jdbcurl，用户名，密码，点击下一步，
+配置网络处理器和通道表格不需要修改，点击下一步，
+点击完成按钮完成。
