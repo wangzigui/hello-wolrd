@@ -249,6 +249,14 @@ login如果查出俩个以上日志，打印error日志，删除所有记录 TY-
 对象序列化消息传递 TY-35
 属于任务：规划kafka
 
+交易单元模块 : Trade Unit Controller Show/Hide List Operations Expand Operations
+佣金模块 : Commission Controller Show/Hide List Operations Expand Operations
+基金模块 : Fund Controller Show/Hide List Operations Expand Operations
+外部相关接口 : Out Controller Show/Hide List Operations Expand Operations
+渠道模块 : Channel Controller Show/Hide List Operations Expand Operations
+用户模块 : User Controller Show/Hide List Operations Expand Operations
+通知公告模块 : Message Controller
+
 
 nfsuper   start_1234
 
