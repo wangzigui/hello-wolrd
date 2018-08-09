@@ -249,12 +249,52 @@ login如果查出俩个以上日志，打印error日志，删除所有记录 TY-
 对象序列化消息传递 TY-35
 属于任务：规划kafka
 
-交易单元模块 : Trade Unit Controller Show/Hide List Operations Expand Operations
 佣金模块 : Commission Controller Show/Hide List Operations Expand Operations
+POST /in/commission/checkcommission 审核券商佣金数据
+POST /in/commission/exportAllcommission 导出所有报表数据到excel(admin)
+POST /in/commission/importcommission 导入佣金数据
+POST /in/commission/modifycommission 更新佣金数据信息
+POST /in/commission/querycheckmonth 查询佣金数据的审核情况
+POST /in/commission/querycommission 管理员批量查询佣金
+POST /in/commission/querycommissiondetail 管理员查询单条佣金记录
+POST /in/commission/querydisplaycon 查询用户佣金可以显示的列
+POST /in/commission/updatedisplaycon 管理员修改佣金显示控制
 基金模块 : Fund Controller Show/Hide List Operations Expand Operations
+POST /in/fund/addfund 新增基金
+POST /in/fund/deletefund 删除基金
+POST /in/fund/getFundList 获取所有基金列表
+POST /in/fund/queryfund 查询基金
+POST /in/fund/querynffundlinkman 获取南方基金联系人信息
 外部相关接口 : Out Controller Show/Hide List Operations Expand Operations
 渠道模块 : Channel Controller Show/Hide List Operations Expand Operations
+POST /in/channel/activechannel 管理员激活渠道
+POST /in/channel/addAccountInfo 新增渠道的银行账户信息
+POST /in/channel/addchannel 新增渠道。管理员操作
+POST /in/channel/delAccountInfo 删除渠道的银行账户信息
+POST /in/channel/getAccountInfo 获取渠道银行帐号列表
+POST /in/channel/getAllChannelList 获取所有渠道列表
+POST /in/channel/getChannelLinkman 获取渠道联系人列表
+POST /in/channel/querychannelinfo 管理员查询渠道
+POST /in/channel/suspendchannel 管理员停用渠道
+POST /in/channel/updatechannel 更新渠道信息，供管理员修改
 用户模块 : User Controller Show/Hide List Operations Expand Operations
+POST /in/user/adduser 新增用户
+POST /in/user/adminactiveuser 账户激活
+POST /in/user/admininituserpassword 初始化用户密码
+POST /in/user/adminqueryuser 管理员查询账户信息
+POST /in/user/adminqueryuserinfor 管理员查询用户的详细信息
+POST /in/user/adminsuspenduser 账户停用
+POST /in/user/createalluser 批量新增用户账户
+POST /in/user/deleteuser 删除用户账户
+POST /in/user/updateuserinfo 更新账户信息，供用户修改
+通知公告模块 : Message Controller Show/Hide List Operations Expand Operations
+POST /in/message/addmessage 新增通知
+POST /in/message/cancelmessage 取消发布通知
+POST /in/message/deletemessage 删除通知
+POST /in/message/modifymessage 修改通知公告
+POST /in/message/querymessage 查询通知
+POST /in/message/querymessageinfo 查询具体某一条通知
+POST /in/message/releasemessage 发布通知
 通知公告模块 : Message Controller
 
 
